@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play Online Safely</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: linear-gradient(135deg, #007bff, #00c6ff);
+      color: white;
+      height: 65vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+      animation: fadeInDown 1.5s ease-in-out;
+      color: white;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hamburger Button */
+    .openbtn {
+      font-size: 28px;
+      cursor: pointer;
+      background: #007bff;
+      border: none;
+      color: white;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1200;
+      border-radius: 6px;
+      padding: 8px 14px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .openbtn:hover {
+      background: #0056b3;
+      transform: scale(1.1);
+    }
+
+    /* Sidebar */
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.95), rgba(20,20,20,0.95));
+      backdrop-filter: blur(10px);
+      overflow-y: auto;
+      transition: width 0.6s ease;
+      padding-top: 60px;
+      z-index: 1100;
+      box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .sidenav.open {
+      width: 270px;
+      animation: slideIn 0.6s ease;
+    }
+
+    @keyframes slideIn {
+      from { width: 0; opacity: 0.5; }
+      to { width: 270px; opacity: 1; }
+    }
+
+    .sidenav a {
+      padding: 14px 24px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #f1f1f1;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.3s ease;
+    }
+
+    .sidenav a:hover {
+      color: #00c6ff;
+    }
+
+    .sidenav a::before {
+      content: "";
+      position: absolute;
+      left: -100%;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 123, 255, 0.3);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    .sidenav a:hover::before {
+      left: 0;
+    }
+
+    .sidenav .closebtn {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      font-size: 30px;
+      margin-left: 50px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .sidenav .spacer {
+      height: 70px;
+      pointer-events: none;
+    }
+
+    /* Sections */
+    section {
+      padding: 30px;
+      margin: 20px auto;
+      max-width: 900px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    section:nth-child(even) {
+      animation-delay: 0.2s;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25);
+    }
+
+    section h2 {
+      margin-top: 0;
+      color: #007bff;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Back to Top */
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 1000;
+      font-size: 20px;
+      border: none;
+      outline: none;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+      padding: 12px 18px;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    #backToTop:hover {
+      background: #0056b3;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <button class="openbtn" onclick="toggleNav()">☰</button>
+  <h1>🌐 Play Safely Online</h1>
+</header>
+
+<!-- Sidebar -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="#privacy">Privacy</a>
+  <a href="#scams">Scams</a>
+  <a href="#strangers">Strangers</a>
+  <a href="#kindness">Kindness</a>
+  <a href="#passwords">Passwords</a>
+  <a href="#breaks">Breaks</a>
+  <a href="#tricks">Tricks</a>
+  <a href="#links">Links</a>
+  <a href="#email">Gaming Email</a>
+  <a href="#voice">Voice Chat</a>
+  <a href="#grooming">Grooming</a>
+  <a href="#screenshots">Screenshots</a>
+  <a href="#downloads">Downloads</a>
+  <a href="#updates">Updates</a>
+  <a href="#logoff">Log Off</a>
+  <a href="#not-alone">Not Alone</a>
+  <div class="spacer"></div>
+</div>
+
+<!-- Sections with Data -->
+<section id="privacy">
+  <h2>🔒 Don’t Share Personal Info</h2>
+  <p>Protecting your personal information is the first and most important step in staying safe online. Never share details like your real name, address, phone number, school, or passwords with anyone you meet in a game. Scammers and bad actors often pretend to be friendly just to trick you into revealing private information. Instead, use a fun nickname or gaming tag that doesn’t reveal who you are. Remember, the less others know about your real life, the safer you stay. Once information is shared, you can’t take it back, and it can be used against you in ways you don’t expect.</p>
+</section>
+
+<section id="scams">
+  <h2>🕵️‍♀️ Watch Out for Scams</h2>
+  <p>Scammers are everywhere online, and games are no exception. They may send fake links promising free coins, skins, or special items, but these are often designed to steal your login details or install harmful software. If something sounds too good to be true, it usually is. Always double-check before clicking, and only trust official in-game stores or websites. Protect your account like a treasure chest — because that’s exactly what it is to a scammer.</p>
+</section>
+
+<section id="strangers">
+  <h2>👻 Don’t Chat Privately with Strangers</h2>
+  <p>Talking to strangers in a game chat might seem harmless, but private chats can be dangerous. Some people may try to gain your trust, ask personal questions, or encourage you to move to private apps where they can pressure you. If someone insists on secrecy, it’s a red flag. Remember, friends online are not the same as friends in real life. Keep all conversations safe and public, and block or report anyone who makes you uncomfortable.</p>
+</section>
+
+<section id="kindness">
+  <h2>😊 Be Kind, Not Mean</h2>
+  <p>Gaming should be fun, but sometimes players can be rude or mean. The best way to respond isn’t to fight back, but to block, mute, or report toxic players. Always remember that words matter. Choosing kindness not only makes the game more enjoyable for you, but it also creates a safer, friendlier community. You never know how much a kind word could brighten someone’s day.</p>
+</section>
+
+<section id="passwords">
+  <h2>🔐 Use Strong Passwords</h2>
+  <p>Weak passwords make it easy for hackers to break into your accounts. Use different, strong passwords for every account you own, and add two-factor authentication (2FA) wherever possible. Think of your password as a key: the stronger and more unique it is, the harder it is for someone to break into your digital house. Simple combinations like “12345” or “password” are never safe. Protect your gaming world with powerful keys.</p>
+</section>
+
+<section id="breaks">
+  <h2>🧘 Take Screen Breaks</h2>
+  <p>Sitting for too long in front of a screen can make your eyes tired, your body stiff, and even hurt your mood. Taking short breaks every hour helps you stay healthy and focused. Stretch, grab some water, or step outside for fresh air. Games will always be there when you get back, but your health must come first. A healthy player is a stronger player.</p>
+</section>
+
+<section id="tricks">
+  <h2>🧠 Don’t Fall for Tricks</h2>
+  <p>Social engineering is when someone pretends to be nice just to get something from you, like your password or personal details. They may act like a teammate, a gift-giver, or even a friend. Always stay alert. Real friends don’t need your secrets to support you. If someone pressures you or offers you rewards for information, step back immediately.</p>
+</section>
+
+<section id="links">
+  <h2>🔗 Double-Check Links Before Clicking</h2>
+  <p>Links can be sneaky. Hover over a link before you click it to see where it really goes. If it looks weird, has spelling mistakes, or asks you to log in, skip it. Only visit websites you know and trust. Just one bad click could give hackers access to your account or computer. Stay sharp — your safety is worth more than any shortcut or promise.</p>
+</section>
+
+<section id="email">
+  <h2>📧 Use a Separate Email for Gaming</h2>
+  <p>Using a separate email just for games keeps your school, work, or personal life safe. If your gaming email gets hacked, your personal details stay untouched. This small step makes it harder for scammers to mess with your important accounts. It’s like having a separate backpack for gaming gear — neat, organized, and much safer.</p>
+</section>
+
+<section id="voice">
+  <h2>🎧 Be Careful in Voice Chat</h2>
+  <p>Voice chat is fun and makes games more interactive, but it’s also risky. Never say your real name, where you live, or personal details while chatting. People can record and misuse what you say. Keep conversations friendly and game-focused. If someone makes you uncomfortable, mute or block them. Protecting your privacy is always more important than fitting in.</p>
+</section>
+
+<section id="grooming">
+  <h2>🚩 Watch for Grooming Behavior</h2>
+  <p>Some adults may try to build trust with younger players by giving gifts, acting overly friendly, or asking to keep secrets. This is called grooming, and it’s extremely dangerous. If anyone behaves like this, block and report them immediately. Most importantly, talk to a trusted adult. You are never responsible for someone else’s inappropriate behavior — your job is simply to stay safe.</p>
+</section>
+
+<section id="screenshots">
+  <h2>📷 Be Smart with Screenshots and Videos</h2>
+  <p>Screenshots and videos are fun to share, but always check the background first. Does it reveal your real name, location, or anything personal? Once shared, these images can spread faster than you expect. Always think twice before posting — it’s much easier to keep information private than to clean up after it’s shared online.</p>
+</section>
+
+<section id="downloads">
+  <h2>💻 Be Cautious with Downloads</h2>
+  <p>Mods, hacks, and “free” downloads may sound exciting, but they often come with hidden dangers like viruses or spyware. Always download from official stores or trusted websites. Use antivirus protection to keep your device safe. A single unsafe download could cost you your account or even your whole device.</p>
+</section>
+
+<section id="updates">
+  <h2>🔄 Keep Devices Up to Date</h2>
+  <p>Updates aren’t just about new features — they often fix security holes that hackers could use to attack your account. Whether it’s your console, phone, or computer, keeping everything updated is one of the easiest ways to stay safe. Think of updates like armor upgrades in a game — they make you stronger against new threats.</p>
+</section>
+
+<section id="logoff">
+  <h2>🧘‍♂️ Know When to Log Off</h2>
+  <p>If you’re feeling angry, stressed, or overwhelmed, logging off is the best thing you can do. Taking breaks helps you return fresh and ready to enjoy the game again. Never let online arguments or losses affect your real life. Games are for fun, and your peace of mind always comes first.</p>
+</section>
+
+<section id="not-alone">
+  <h2>👨‍👩‍👧‍👦 You’re Not Alone</h2>
+  <p>If something online doesn’t feel right, never handle it alone. Talk to a trusted adult such as a parent, teacher, or older sibling. They can give advice, protect you, and help you understand what’s going on. Gaming should never make you feel unsafe, and you always have someone to turn to. Asking for help is not a weakness — it’s a smart choice that keeps you safe.</p>
+</section>
+
+<!-- Back to Top -->
+<button onclick="topFunction()" id="backToTop">↑</button>
+
+<script>
+  function toggleNav() {
+    document.getElementById("mySidenav").classList.toggle("open");
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").classList.remove("open");
+  }
+
+  // Back to top button
+  let mybutton = document.getElementById("backToTop");
+  window.onscroll = function () { scrollFunction() };
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+
+  function topFunction() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
